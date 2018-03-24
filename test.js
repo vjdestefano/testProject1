@@ -177,7 +177,7 @@ function displayFrom3D(giff, youtube, speechText){
     var testVid = $("<iframe>").attr("src","https://www.youtube.com/embed/" + youtube);
     //testVid.attr("style","display: none;")
     testVid.attr("id", "testVid");
-    testVid.attr("width",($('#youTubeVid').innerWidth() * .8));
+    testVid.attr("width",($('#youTubeVid').innerWidth() * .7));
     testVid.attr("height",($('#youTubeVid').innerWidth() * .61))
     console.log(testVid);
     $("#youTubeVid").append(testVid);
