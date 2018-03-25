@@ -1,15 +1,33 @@
+
+var closeYouTube = false;
+
+
 function bTogglePage(bRequest3dOpen){
 if(bRequest3dOpen){
 $("#youTubeVid").hide(500);
 $("#the3Dbox").slideDown(750);
+closeYouTube = false;
+if(!closeYouTube){
+  $("#closeButton").attr("style","display: none;");
+}
 }else{
   $("#the3Dbox").hide(500);
   $("#youTubeVid").slideDown(750);
+  closeYouTube = true
+  if(closeYouTube){
+    $("#closeButton").attr("style","");
+  }
 }
 window.setTimeout(ant3d.Resize(),900);
 }
 
-
+$("#closeButton").on("click", function() {
+  $("#the3Dbox").slideToggle();
+  //   b3dOpen = true;
+  $("#youTubeVid").slideToggle();
+  //   $("#openButton").toggle();
+  $("#closeButton").toggle();
+  });
 
 
 
@@ -126,13 +144,7 @@ $("#searchTest").on("keyup", function(event) {
   }
 });
 
-// $("#closeButton").on("click", function() {
-//   $("#the3Dbox").slideToggle();
-//   b3dOpen = true;
-//   $("#youTubeVid").slideToggle();
-//   $("#openButton").toggle();
-//   $("#closeButton").toggle();
-// });
+
 
 // $("#openButton").on("click", function() {
 //   $("#the3Dbox").slideToggle();
