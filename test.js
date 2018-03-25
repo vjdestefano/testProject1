@@ -1,18 +1,21 @@
+
+function animateTimer(object){
+  window.setTimeout(object.slideUp(), 2000);
+}
+function animateTimerDown(object){
+  window.setTimeout(object.slideDownS(), 2000);
+}
+
 function bTogglePage(bRequest3dOpen){
 if(bRequest3dOpen){
 $("#the3Dbox").show();
-
-$("#youTubeVid").slideUp();
+animateTimer($("#youTubeVid"));
 }else{
   $("#the3Dbox").hide();
-  $("#youTubeVid").slideDown();
+  animateTimerDown($("#youTubeVid"));
 }
 ant3d.Resize();
 }
-
-
-
-
 
 
 
@@ -139,21 +142,21 @@ $("#searchTest").on("keyup", function(event) {
   }
 });
 
-// $("#closeButton").on("click", function() {
-//   $("#the3Dbox").slideToggle();
-//   b3dOpen = true;
-//   $("#youTubeVid").slideToggle();
-//   $("#openButton").toggle();
-//   $("#closeButton").toggle();
-// });
+$("#closeButton").on("click", function() {
+  $("#the3Dbox").slideToggle();
+  b3dOpen = true;
+  $("#youTubeVid").slideToggle();
+  $("#openButton").toggle();
+  $("#closeButton").toggle();
+});
 
-// $("#openButton").on("click", function() {
-//   $("#the3Dbox").slideToggle();
-//   b3dOpen = false;
-//   $("#youTubeVid").slideToggle();
-//   $("#closeButton").toggle();
-//   $("#openButton").toggle();
-// });
+$("#openButton").on("click", function() {
+  $("#the3Dbox").slideToggle();
+  b3dOpen = false;
+  $("#youTubeVid").slideToggle();
+  $("#closeButton").toggle();
+  $("#openButton").toggle();
+});
 
 function displayFrom3D(giff, youtube, speechText){
   console.log(youtube);
