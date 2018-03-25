@@ -1,12 +1,14 @@
 function bTogglePage(bRequest3dOpen){
 if(bRequest3dOpen){
-$("#youTubeVid").hide(500);
-$("#the3Dbox").slideDown(600);
+$("#youTubeVid").hide("fold",500);
+//$("#the3Dbox").slideDown(600);
+$("#the3Dbox").show("fold",800);
 }else{
-  $("#the3Dbox").hide(500);
-  $("#youTubeVid").slideDown(600);
+  $("#the3Dbox").hide("fold",500);
+  //$("#youTubeVid").slideDown(600);
+  $("#youTubeVid").show("fold",800);
 }
-window.setTimeout(ant3d.Resize(),700);
+window.setTimeout(ant3d.Resize(),900);
 }
 
 
