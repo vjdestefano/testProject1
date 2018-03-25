@@ -8,11 +8,11 @@ function animateTimerDown(object){
 
 function bTogglePage(bRequest3dOpen){
 if(bRequest3dOpen){
-// animateTimerDown($("#the3Dbox").show());
-$("#youTubeVid").hide();
+$("#the3Dbox").show(500);
+$("#youTubeVid").hide(500);
 }else{
-  // animateTimer($("#the3Dbox").hide());
-  $("#youTubeVid").slideDown();
+  $("#the3Dbox").hide(500);
+  $("#youTubeVid").show(500);
 }
 ant3d.Resize();
 }
