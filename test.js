@@ -3,8 +3,8 @@ if(bRequest3dOpen){
 $("#youTubeVid").hide( "drop", { direction: "down" },600);
 $("#the3Dbox").slideDown(700);
 }else{
-  $("#the3Dbox").hide( "drop", { direction: "down" },600);
-  $("#youTubeVid").slideDown(700);
+  $("#the3Dbox").hide(600);
+  $("#youTubeVid").show("drop", { direction: "down" },700);
 }
 window.setTimeout(ant3d.Resize(),800);
 }
