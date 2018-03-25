@@ -1,12 +1,12 @@
 function bTogglePage(bRequest3dOpen){
 if(bRequest3dOpen){
 $("#youTubeVid").hide(500);
-$("#the3Dbox").slideDown(600);
+$("#the3Dbox").slideDown(750);
 }else{
   $("#the3Dbox").hide(500);
-  $("#youTubeVid").slideDown(600);
+  $("#youTubeVid").slideDown(750);
 }
-window.setTimeout(ant3d.Resize(),700);
+window.setTimeout(ant3d.Resize(),900);
 }
 
 
