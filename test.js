@@ -120,14 +120,6 @@ $("#searchTest").on("keyup", function(event) {
     playPause.play();
     $("#searchBarMain").val("");
    
-    // if (!b3dOpen){
-    //   $("#youTubeVid").slideToggle();
-    //   tubeOpen = false;
-    //   $("#the3Dbox").slideToggle();
-
-    //   b3dOpen = true;
-    //   ant3d.Resize();
-    // }
     
 
     
@@ -142,21 +134,21 @@ $("#searchTest").on("keyup", function(event) {
   }
 });
 
-$("#closeButton").on("click", function() {
-  $("#the3Dbox").slideToggle();
-  b3dOpen = true;
-  $("#youTubeVid").slideToggle();
-  $("#openButton").toggle();
-  $("#closeButton").toggle();
-});
+// $("#closeButton").on("click", function() {
+//   $("#the3Dbox").slideToggle();
+//   b3dOpen = true;
+//   $("#youTubeVid").slideToggle();
+//   $("#openButton").toggle();
+//   $("#closeButton").toggle();
+// });
 
-$("#openButton").on("click", function() {
-  $("#the3Dbox").slideToggle();
-  b3dOpen = false;
-  $("#youTubeVid").slideToggle();
-  $("#closeButton").toggle();
-  $("#openButton").toggle();
-});
+// $("#openButton").on("click", function() {
+//   $("#the3Dbox").slideToggle();
+//   b3dOpen = false;
+//   $("#youTubeVid").slideToggle();
+//   $("#closeButton").toggle();
+//   $("#openButton").toggle();
+// });
 
 function displayFrom3D(giff, youtube, speechText){
   console.log(youtube);
