@@ -27,6 +27,8 @@ $("#closeButton").on("click", function() {
   $("#youTubeVid").slideToggle();
   //   $("#openButton").toggle();
   $("#closeButton").toggle();
+
+  ant3d.Resize();
   });
 
 
