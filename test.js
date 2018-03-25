@@ -3,7 +3,7 @@ function animateTimer(object){
   window.setTimeout(object.slideUp(), 2000);
 }
 function animateTimerDown(object){
-  window.setTimeout(object.slideDownS(), 2000);
+  window.setTimeout(object.slideDown(), 2000);
 }
 
 function bTogglePage(bRequest3dOpen){
