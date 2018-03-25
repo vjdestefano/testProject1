@@ -1,11 +1,3 @@
-
-function animateTimer(object){
-  window.setTimeout(object.slideUp(), 2000);
-}
-function animateTimerDown(object){
-  window.setTimeout(object.slideDown(), 2000);
-}
-
 function bTogglePage(bRequest3dOpen){
 if(bRequest3dOpen){
 $("#youTubeVid").hide(500);
@@ -14,7 +6,7 @@ $("#the3Dbox").show(500);
   $("#the3Dbox").hide(500);
   $("#youTubeVid").show(500);
 }
-ant3d.Resize();
+window.setTimeout(ant3d.Resize(),700);
 }
 
 
