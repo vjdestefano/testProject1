@@ -106,3 +106,8 @@ a {
 #the3Dbox,#youTubeVid.card {
   background-color: #ef6c00 !important;
 }
+
+#navBarPic{
+  position: relative;
+  top: -5;
+}
