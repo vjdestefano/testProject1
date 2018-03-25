@@ -8,8 +8,8 @@ function animateTimerDown(object){
 
 function bTogglePage(bRequest3dOpen){
 if(bRequest3dOpen){
-$("#the3Dbox").show(500);
 $("#youTubeVid").hide(500);
+$("#the3Dbox").show(500);
 }else{
   $("#the3Dbox").hide(500);
   $("#youTubeVid").show(500);
