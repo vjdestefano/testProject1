@@ -1,6 +1,6 @@
 function bTogglePage(bRequest3dOpen){
 if(bRequest3dOpen){
-$("#youTubeVid").hide( "drop", { direction: "down" },600);
+$("#youTubeVid").hide(600);
 $("#the3Dbox").slideDown(700);
 }else{
   $("#the3Dbox").hide(600);
