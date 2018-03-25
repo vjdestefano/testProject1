@@ -1,12 +1,12 @@
 function bTogglePage(bRequest3dOpen){
 if(bRequest3dOpen){
-$("#youTubeVid").hide(500);
-$("#the3Dbox").slideDown(600);
+$("#youTubeVid").hide("fold",600);
+$("#the3Dbox").slideDown(700);
 }else{
-  $("#the3Dbox").hide(500);
-  $("#youTubeVid").slideDown(600);
+  $("#the3Dbox").hide("fold",600);
+  $("#youTubeVid").slideDown(670);
 }
-window.setTimeout(ant3d.Resize(),700);
+window.setTimeout(ant3d.Resize(),800);
 }
 
 
@@ -165,7 +165,7 @@ function displayFrom3D(giff, youtube, speechText){
     var testVid = $("<iframe>").attr("src","https://www.youtube.com/embed/" + youtube);
     //testVid.attr("style","display: none;")
     testVid.attr("id", "testVid");
-    testVid.attr("width",($('#youTubeVid').innerWidth() * .95));
+    testVid.attr("width",($('#youTubeVid').innerWidth() * 1));
     testVid.attr("height",($('#youTubeVid').innerWidth() * .61))
     console.log(testVid);
     $("#youTubeVid").append(testVid);
