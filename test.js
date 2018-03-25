@@ -8,10 +8,10 @@ function animateTimerDown(object){
 
 function bTogglePage(bRequest3dOpen){
 if(bRequest3dOpen){
-animateTimerDown($("#the3Dbox").show());
+// animateTimerDown($("#the3Dbox").show());
 $("#youTubeVid").hide();
 }else{
-  animateTimer($("#the3Dbox").hide());
+  // animateTimer($("#the3Dbox").hide());
   $("#youTubeVid").slideDown();
 }
 ant3d.Resize();
@@ -168,7 +168,8 @@ function displayFrom3D(giff, youtube, speechText){
   console.log(youtube);
   if(youtube){
     console.log(typeof youtube);
-    $("#youTubeVid").empty();
+    $("#youTubeVid").empty();  
+    bTogglePage(false);
     var testVid = $("<iframe>").attr("src","https://www.youtube.com/embed/" + youtube);
     //testVid.attr("style","display: none;")
     testVid.attr("id", "testVid");
@@ -176,7 +177,7 @@ function displayFrom3D(giff, youtube, speechText){
     testVid.attr("height",($('#youTubeVid').innerWidth() * .61))
     console.log(testVid);
     $("#youTubeVid").append(testVid);
-    bTogglePage(false);
+  
     // $("#the3Dbox").slideToggle();
     // tubeOpen = true;
 
