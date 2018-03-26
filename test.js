@@ -122,7 +122,7 @@ $("#searchTest").on("keyup", function(event) {
 
   var testKey = $("#searchBarMain").val();
   console.log(testKey);
-  if(testKey.length() === 0){
+  if(testKey.length === 0){
     var msg = new SpeechSynthesisUtterance();
     var voices = window.speechSynthesis.getVoices();
     msg.text = "Please search for a valid term!";
