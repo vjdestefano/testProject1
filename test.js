@@ -119,7 +119,7 @@ $(".collapsible-header").on("click", function(event) {
 $("#searchTest").on("keyup", function(event) {
   event.preventDefault();
   if (event.key === "Enter") {
-  if($("#input").length() === 0){
+  if($("#input").val().length() === 0){
     var msg = new SpeechSynthesisUtterance();
     var voices = window.speechSynthesis.getVoices();
     msg.text = "Please search for a valid term!";
