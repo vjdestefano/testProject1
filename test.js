@@ -119,7 +119,17 @@ $(".collapsible-header").on("click", function(event) {
 $("#searchTest").on("keyup", function(event) {
   event.preventDefault();
   if (event.key === "Enter") {
-    event.preventDefault();
+  if($("#input").lenght() === 0){
+    var msg = new SpeechSynthesisUtterance();
+    var voices = window.speechSynthesis.getVoices();
+    msg.text = "Please search for a valid term!";
+    msg.pitch = 0.5;
+    msg.rate = 0.4;
+
+    window.speechSynthesis.speak(msg);
+
+  } else {
+ event.preventDefault();
     bTogglePage(true);
     var testKey = $("#searchBarMain").val();
     console.log(testKey);
@@ -143,6 +153,9 @@ $("#searchTest").on("keyup", function(event) {
     msg.rate = 0.4;
 
     window.speechSynthesis.speak(msg);
+
+  }
+   
   }
 });
 

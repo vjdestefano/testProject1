@@ -1,9 +1,12 @@
 //A.Napolitano  03/22/2018
-//2
+//v.0.0.0.1.1
 //ant3d is a simple api extraction and 3d interface written in THREE.js
 //It currently displays data from the API's: Wikipedia, Giffy
 //The script is interfaced by calling the ant3d.Startup method
 //with the parameters SearchText, $(DomElement). See bottom of code for example.
+//--Fixed Mouse Detection
+//--Fixed Api Callback Call structure 
+//--A.A.N 3/26/2018
 function displayFrom3D(giffy, youtube, text){
   $('#output').text(giffy + youtube + text);
 }
@@ -86,7 +89,7 @@ var ant3d = {
       ant3d.GenerateObjects();
     });
   },
-  getWikiData: function (SearchTerm, callback) {
+  getWikiData: function (SearchTerm) {
     $.ajax({
       type: "GET",
       url: 'https://en.wikipedia.org/w/api.php?action=opensearch&search="' + SearchTerm + '"&format=json&callback=?',
@@ -100,10 +103,10 @@ var ant3d = {
         ant3d.colArticles.push(jsondata[2][index]);
         ant3d.colLinks.push(jsondata[3][index]);
       })
-      callback(SearchTerm);
+      ant3d.getYouTubeData(SearchTerm);
     });
   },
-  GetGiffys: function (inSrch, callback) {
+  GetGiffys: function (inSrch) {
     let gkey = "aGpceXfwMY5TKtoH39N128oj2HirwBKv";
     let offset = Math.floor(Math.random() * 125);
     ant3d.colMovs.length = 0;
@@ -117,8 +120,7 @@ var ant3d = {
         let gif = rd.images.looping.mp4;
         ant3d.colGiffys.push(gif);
       }
-      callback(inSrch, ant3d.getYouTubeData(inSrch));
-      //callback(inSrch, ant3d.GenerateObjects);
+      ant3d.getWikiData(inSrch);      
     });
   },
   RunVideos: function () {
@@ -155,10 +157,6 @@ var ant3d = {
     ant3d.renderer.renderLists.dispose();
     ant3d.scene = new THREE.Scene();
     ant3d.renderer = new THREE.WebGLRenderer();
-    //ant3d.myheight = ant3d.jRightHereBaby.height() * ant3d.Hcoef;//window.innerHeight * ant3d.Hcoef;;
-    //ant3d.mywidth = ant3d.jRightHereBaby.width()  * ant3d.Wcoef;//window.innerWidth * ant3d.Wcoef;
-    //ant3d.camera = new THREE.PerspectiveCamera(75, (ant3d.mywidth / ant3d.myheight), 0.1, 1000);
-    //ant3d.renderer.setSize(ant3d.mywidth, ant3d.myheight);
     ant3d.Resize();
     ant3d.colMovs.length = 0;
     ant3d.colHeadings.length = 0;
@@ -176,26 +174,20 @@ var ant3d = {
     if (ant3d.bFirstTime) {
       ant3d.callpage = inOutCallback;
       ant3d.bFirstTime = false;
-      //   $(document).off('dblclick');
-      $(document).on('dblclick',
+      $(ant3d.jRightHereBaby).on('dblclick',
         function (e) {
           ant3d.bDblClick = true;
-          //    e.preventDefault();
         });
-      //   $(document).off('click');
-      $(document).on('click', function (e) {
+      $(ant3d.jRightHereBaby).on('click', function (e) {
         ant3d.mylastevent = e;
         ant3d.RunVideos();
       });
-      //inJQueryDomElement = $('.mycanvas');
-      //   $(document).off('touchstart');
-      $(document).on('touchstart', function (e) {
+      $(ant3d.jRightHereBaby).on('touchstart', function (e) {
         ant3d.mylastevent = e;
         ant3d.UpdateMouse(e);
         ant3d.RunVideos();
       });
-      //    $(document).off('touchend');
-      $(document).on('touchend', function (e) {
+      $(ant3d.jRightHereBaby).on('touchend', function (e) {
         ant3d.UpdateMouse(e);
         ant3d.DeltaX = ant3d.mylastevent.originalEvent.touches[0].pageX - e.originalEvent.changedTouches[0].pageX;
         ant3d.bFireDetectObjectsUnderMouse = true
@@ -203,18 +195,15 @@ var ant3d = {
         ant3d.rotspeed = ant3d.DeltaX * .0001;
         ant3d.RunVideos();
       });
-      //    $(document).off('mousedown');
-      $(document).on('mousedown', function (e) {
+      $(ant3d.jRightHereBaby).on('mousedown', function (e) {
         ant3d.mylastevent = e;
         ant3d.UpdateMouse(e);
         ant3d.bFireDetectObjectsUnderMouse = true;
         ant3d.RunVideos();
       });
-      //    $(document).off('mouseup');
-      $(document).on('mouseup', function (e) {
+      $(ant3d.jRightHereBaby).on('mouseup', function (e) {
         ant3d.UpdateMouse(e);
         ant3d.DeltaX = ant3d.mylastevent.clientX - e.clientX;
-        //console.log(ant3d.DeltaX);
         ant3d.rotspeed = ant3d.DeltaX * .0001;
         ant3d.mylastevent = e;
         ant3d.RunVideos();
@@ -224,28 +213,23 @@ var ant3d = {
   },
   UpdateMouse: function (e) {
     console.log(e);
-    // if(e.ClientX){
-    //   ant3d.ant3dMouse.x = ( e.clientX / ($('#rightherebaby').innerWidth * ant3d.Wcoef) ) * 2 - 1;
-    //   ant3d.ant3dMouse.y = - ( e.clientY / ($('#rightherebaby').innerHeight * ant3d.Hcoef) ) * 2 + 1;
-    // }
-    // if(e.pageX){
-    //   ant3d.ant3dMouse.x = ( e.pageX / ($('#rightherebaby').innerWidth * ant3d.Wcoef) ) * 2 - 1;
-    //   ant3d.ant3dMouse.y = - ( e.pageY / ($('#rightherebaby').innerHeight * ant3d.Hcoef) ) * 2 + 1;
-    // }
     
-    ant3d.ant3dMouse.x = (e.clientX / (window.innerWidth * ant3d.Wcoef)) * 2 - 1;
-    ant3d.ant3dMouse.y = - (e.clientY / (window.innerHeight * ant3d.Hcoef)) * 2 + 1;
+    //let ox = (e.clientX / (window.innerWidth * ant3d.Wcoef)) * 2 - 1;
+    //let oy = - (e.clientY / (window.innerHeight * ant3d.Hcoef)) * 2 + 1;
+    ant3d.ant3dMouse.x = ((e.clientX) / (window.innerWidth * ant3d.Wcoef)) * 2 - 1;
+    ant3d.ant3dMouse.y = - ((e.pageY - $('#the3Dbox').offset().top) / (ant3d.jRightHereBaby.innerHeight() * ant3d.Hcoef)) * 2 + 1;
+    
   },
-  GetTextArray: function (inText, inLineLen) {
+  GetTextArray: function (inMyText, inMyLineLen) {
     //This function wraps text el-manuel aan.
     let col = [];
-    let wrkwords = inText.split(' ');
+    let wrkwords = inMyText.split(' ');
     let wrkline = '';
     //Split words by space into array
     $.each(wrkwords, function (i, item) {
       let curline = wrkline + ' ' + item;
       //If current line + new word and space is too big. break
-      if (curline.length > inLineLen) {
+      if (curline.length > inMyLineLen) {
         //break line; push to output col
         col.push(wrkline);
         wrkline = item;
@@ -530,7 +514,8 @@ var ant3d = {
         console.log(graObj[0].object);
         ant3d.CurGiffy = graObj[0].object.MyGiffyLink;
         ant3d.CurYouTube = graObj[0].object.YouTubeId.videoId;
-        ant3d.ReadText = graObj[0].object.Title + ' ' + graObj[0].object.Article;
+        //ant3d.ReadText = graObj[0].object.Title + ' ' + graObj[0].object.Article;
+        ant3d.ReadText = graObj[0].object.Article;
         setTimeout(function () {
           ant3d.callpage(ant3d.CurGiffy, ant3d.CurYouTube, ant3d.ReadText);
         }, 1);
