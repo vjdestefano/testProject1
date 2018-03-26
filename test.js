@@ -121,6 +121,7 @@ $("#searchTest").on("keyup", function(event) {
   if (event.key === "Enter") {
 
   var testKey = $("#searchBarMain").val();
+  console.log(testKey);
   if(testKey.length() === 0){
     var msg = new SpeechSynthesisUtterance();
     var voices = window.speechSynthesis.getVoices();
