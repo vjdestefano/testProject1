@@ -78,7 +78,7 @@ var clickAnime = anime({
   targets: ".clickThis",
   width: [
     {
-      value: "335px",
+      value: ($('.collapsible-body').innerWidth() * .95),
       duration: 500,
       elasticity: 100,
       easing: "easeInOutQuart",
