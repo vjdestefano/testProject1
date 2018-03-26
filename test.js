@@ -119,7 +119,7 @@ $(".collapsible-header").on("click", function(event) {
 $("#searchTest").on("keyup", function(event) {
   event.preventDefault();
   if (event.key === "Enter") {
-  if($("#searchBarMain").val().length() === 0){
+  if(($("#searchBarMain").val().length()) === 0){
     var msg = new SpeechSynthesisUtterance();
     var voices = window.speechSynthesis.getVoices();
     msg.text = "Please search for a valid term!";
@@ -127,7 +127,7 @@ $("#searchTest").on("keyup", function(event) {
     msg.rate = 0.4;
 
     window.speechSynthesis.speak(msg);
-
+    return
   } else {
  event.preventDefault();
     bTogglePage(true);
